@@ -1,7 +1,8 @@
 // @dart=2.9
 
 import 'package:flutter/material.dart';
-import 'package:health/ui/homescrn.dart';
+import 'package:health/widgets/dismisskeyboard.dart';
+import 'package:health/widgets/navbar.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
           primarySwatch: Colors.green),
-      home: const Home(),
+      home: const DismissKeyboard(child: NavBarClass()),
     );
   }
 }

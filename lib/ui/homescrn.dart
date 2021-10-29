@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health/ui/searchscreen.dart';
 import 'package:health/widgets/card.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -20,7 +21,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-        child: Column(
+        child: ListView(
           // padding: EdgeInsets.zero,
           children: [
             Expanded(
@@ -333,7 +334,7 @@ class _HomeState extends State<Home> {
                 TextFormField(
                   decoration: InputDecoration(
                     //    enabled: ,
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: const Icon(Icons.search),
                     hintText: 'Search For a Pharmacy',
                     fillColor: Colors.white,
                     filled: true,
@@ -344,6 +345,13 @@ class _HomeState extends State<Home> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8)),
                   ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SearchScreen()),
+                    );
+                  },
                 ),
 
                 //SIZEDBOX FOR SPACING
@@ -494,6 +502,7 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
+      // bottomNavigationBar: const NavBarClass(),
     );
   }
 }
