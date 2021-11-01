@@ -1,8 +1,13 @@
 // @dart=2.9
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:health/ui/homescrn.dart';
 import 'package:health/widgets/dismisskeyboard.dart';
 import 'package:health/widgets/navbar.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,7 +33,51 @@ class MyApp extends StatelessWidget {
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
           primarySwatch: Colors.green),
-      home: const DismissKeyboard(child: NavBarClass()),
+      home: SplashScreen(),
     );
+  }
+}
+
+class SplashScreen extends StatefulWidget {
+  // const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(
+        const Duration(seconds: 2),
+        () => Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const DismissKeyboard(child: NavBarClass()),
+            )));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(width: 178, child: Image.asset('assets/Logos.png')),
+          Text(
+            'Health First',
+            style: GoogleFonts.poppins(
+              color: HexColor('908f8f'),
+              fontSize: 15,
+              fontWeight: FontWeight.w400,
+              fontStyle: FontStyle.normal,
+            ),
+          )
+        ],
+      ),
+    ); // FlutterLogo(size: MediaQuery.of(context).size.height));
   }
 }

@@ -1,27 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:health/ui/pharmacies.dart';
-import 'package:health/ui/searchscreen.dart';
-import 'package:health/widgets/card.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  String img = 'assets/Logo.png';
-  String service1 = 'assets/markus-winkler-pOu_UmkOG-0-unsplash 1.png';
-  String text = 'Get';
-  String services1 = 'Pharmacy';
-  String thisTitle = 'Get verified medicines';
+class AccountPage extends StatelessWidget {
+  // AccountPage({
+  //   required this.img,
+  // });
   @override
   Widget build(BuildContext context) {
+    String img = 'assets/Logo.png';
     return Scaffold(
-      backgroundColor: HexColor('F8F8FB'),
+      backgroundColor: HexColor('f8f8fb'),
       drawer: Drawer(
         child: ListView(
           // padding: EdgeInsets.zero,
@@ -325,179 +315,259 @@ class _HomeState extends State<Home> {
               )),
         ],
       ),
-      body: SafeArea(
+      body: Center(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Container(
-            color: HexColor('F8F8FB'),
-            margin: const EdgeInsets.fromLTRB(24, 28, 24, 0),
+            margin: EdgeInsets.fromLTRB(0, 46, 0, 12),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                TextFormField(
-                  decoration: InputDecoration(
-                    //    enabled: ,
-                    prefixIcon: const Icon(Icons.search),
-                    hintText: 'Search For a Pharmacy',
-                    fillColor: Colors.white,
-                    filled: true,
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8)),
+                SizedBox(
+                  width: 88,
+                  height: 88,
+                  child: CircleAvatar(
+                    child: Image.asset('assets/Ellipse.png'),
+                    //  maxRadius: 88,
                   ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SearchScreen()),
-                    );
-                  },
-                ),
-
-                //SIZEDBOX FOR SPACING
-
-                SizedBox(
-                  height: 24,
-                ),
-
-                MyWidgetClass(
-                  pages: Pharmacy(),
-                  img: service1,
-                  buttonText: text,
-                  title: thisTitle,
-                  services: services1,
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 16,
                 ),
-
-                MyWidgetClass(
-                  pages: '',
-                  img: service1,
-                  buttonText: text,
-                  title: thisTitle,
-                  services: 'Consult Doctor',
+                Text(
+                  'Winfred David',
+                  style: GoogleFonts.poppins(
+                    fontSize: 18,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.bold,
+                    color: HexColor('0a0a0a'),
+                  ),
                 ),
-
+                Text(
+                  '+2348123450956',
+                  style: GoogleFonts.poppins(
+                    fontSize: 12,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w400,
+                    color: HexColor('abafb3'),
+                  ),
+                ),
                 SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
-
-                MyWidgetClass(
-                  pages: '',
-                  img: service1,
-                  buttonText: text,
-                  title: thisTitle,
-                  services: 'Lab Test',
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 32),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Doctors near you',
-                        style: GoogleFonts.poppins(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          fontStyle: FontStyle.normal,
-                          color: HexColor('0a0a0a'),
-                        ),
-                      ),
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          primary: Colors.white,
-                          enableFeedback: false,
-                          //    onSurface: Colors.transparent,
-                          //     shadowColor: Colors.transparent,
-                          //    backgroundColor: Colors.transparent
-                        ),
-                        onPressed: () {},
-                        child: Text(
-                          'See all',
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: [
+                        SizedBox(
+                            width: 57,
+                            height: 57,
+                            child: CircleAvatar(
+                              child: Icon(
+                                Icons.person_outline_outlined,
+                                color: Colors.black,
+                                size: 28,
+                              ),
+                              backgroundColor: Colors.white,
+                            )),
+                        SizedBox(height: 6),
+                        Text(
+                          'Saved \n Doctors',
+                          textAlign: TextAlign.center,
                           style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w500,
-                            color: HexColor('27ae60'),
+                            fontSize: 10,
                           ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        SizedBox(
+                            width: 57,
+                            height: 57,
+                            child: CircleAvatar(
+                              child: Icon(
+                                Icons.article_outlined,
+                                color: Colors.black,
+                                size: 28,
+                              ),
+                              backgroundColor: Colors.white,
+                            )),
+                        SizedBox(height: 6),
+                        Text(
+                          'Saved \n Articles',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            fontSize: 10,
+                          ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        SizedBox(
+                            width: 57,
+                            height: 57,
+                            child: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              child: Icon(
+                                Icons.favorite_border_outlined,
+                                color: Colors.black,
+                                size: 28,
+                              ),
+                            )),
+                        const SizedBox(height: 6),
+                        Text(
+                          'Health \n Diary',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            fontSize: 10,
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  margin: EdgeInsets.fromLTRB(30, 48, 30, 0),
+                  constraints: const BoxConstraints(
+                    minHeight: 230,
+                    minWidth: 280,
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(26, 18, 6, 23),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.calendar_today_outlined,
+                                  size: 16,
+                                ),
+                                SizedBox(
+                                  width: 29,
+                                ),
+                                Text(
+                                  'Appointments',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 16,
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w500,
+                                    color: HexColor('807C7C'),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.chevron_right))
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 32,
-                ),
-                SingleChildScrollView(
-                  clipBehavior: Clip.none,
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Doctor(
-                        doctor: 'assets/Ellipse 31.png',
-                        docName: 'Emmanuel Ekpenyong',
-                        docTitle:
-                            'Gynacologist, General Physician, Endocrinologist '
-                            'M.B.B.S, MRCP (UK), MRCP, Nigeria',
-                        starCount: 4,
-                        rating: 4.5,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(26, 18, 6, 23),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.medical_services_outlined,
+                                  size: 16,
+                                ),
+                                SizedBox(
+                                  width: 29,
+                                ),
+                                Text(
+                                  'Pill\'s Reminder',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 16,
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w500,
+                                    color: HexColor('807C7C'),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.chevron_right))
+                          ],
+                        ),
                       ),
-                      SizedBox(
-                        width: 17,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(26, 18, 6, 23),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.person_outline_outlined,
+                                  size: 16,
+                                ),
+                                SizedBox(
+                                  width: 29,
+                                ),
+                                Text(
+                                  'My Doctor\'s',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 16,
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w500,
+                                    color: HexColor('807C7C'),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.chevron_right))
+                          ],
+                        ),
                       ),
-                      Doctor(
-                        doctor: 'assets/Ellipse 31.png',
-                        docName: 'Dr Emmanuel Ugen',
-                        docTitle:
-                            'Internal Medicine Specialist, Urologist, General PhysicianMBBS, MCPS, MRCGP (UK), Nigeria',
-                        starCount: 3,
-                        rating: 3.0,
-                      ),
-                      SizedBox(
-                        width: 17,
-                      ),
-                      Doctor(
-                        doctor: 'assets/Ellipse 31.png',
-                        docName: 'Dr Emmanuel Ugen',
-                        docTitle:
-                            'Internal Medicine Specialist, Urologist, General PhysicianMBBS, MCPS, MRCGP (UK), Nigeria',
-                        starCount: 3,
-                        rating: 3.0,
-                      ),
-                      SizedBox(
-                        width: 17,
-                      ),
-                      Doctor(
-                        doctor: 'assets/Ellipse 31.png',
-                        docName: 'Dr Emmanuel Ugen',
-                        docTitle:
-                            'Internal Medicine Specialist, Urologist, General PhysicianMBBS, MCPS, MRCGP (UK), Nigeria',
-                        starCount: 3,
-                        rating: 3.0,
-                      ),
-                      SizedBox(
-                        width: 17,
-                      ),
-                      Doctor(
-                        doctor: 'assets/Ellipse 31.png',
-                        docName: '',
-                        docTitle: '',
-                        starCount: 3,
-                        rating: 3.0,
-                      ),
-                      SizedBox(
-                        width: 17,
-                      ),
-                      Doctor(
-                        doctor: 'assets/Ellipse 31.png',
-                        docName: '',
-                        docTitle: '',
-                        starCount: 3,
-                        rating: 3.0,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(26, 18, 6, 23),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.monetization_on_outlined,
+                                  size: 16,
+                                ),
+                                SizedBox(
+                                  width: 29,
+                                ),
+                                Text(
+                                  'Insurance Plan',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 16,
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w500,
+                                    color: HexColor('807C7C'),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.chevron_right))
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -507,7 +577,6 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-      // bottomNavigationBar: const NavBarClass(),
     );
   }
 }

@@ -4,11 +4,32 @@ import 'package:flutter_rating/flutter_rating.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+// // ignore: must_be_immutable
+// class MyClass extends MyWidgetClass {
+//   MyClass(
+//     String image,
+//     String titles,
+//     String service,
+//     var page,
+//     String btntxt,
+//   ) : super(
+//           img: image,
+//           title: titles,
+//           buttonText: btntxt,
+//           pages: page,
+//           services: service,
+//         );
+//   //String image;
+//   // MyClass({Key? key}) : super(img: image);
+//
+// }
+
 class MyWidgetClass extends StatelessWidget {
   String img;
   String services;
   String title;
   String buttonText;
+  var pages;
 
   MyWidgetClass({
     Key? key,
@@ -16,7 +37,17 @@ class MyWidgetClass extends StatelessWidget {
     required this.buttonText,
     required this.services,
     required this.title,
+    required this.pages,
   }) : super(key: key);
+  // MyWidgetClass WidgetClass = new MyWidgetClass(
+  //   buttonText: '',
+  //   title: '',
+  //   img: '',
+  //   pages: '',
+  //   services: '',
+  // );
+
+  get paged => pages;
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +117,10 @@ class MyWidgetClass extends StatelessWidget {
                       style: TextButton.styleFrom(
                           backgroundColor: HexColor('f8f8fb'),
                           primary: HexColor('27ae60')),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => paged));
+                      },
                       child: Text(
                         buttonText,
                         style: GoogleFonts.poppins(

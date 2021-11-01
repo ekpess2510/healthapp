@@ -1,25 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:health/ui/pharmacies.dart';
-import 'package:health/ui/searchscreen.dart';
-import 'package:health/widgets/card.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class Pharmacy extends StatelessWidget {
+  const Pharmacy({Key? key}) : super(key: key);
 
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  String img = 'assets/Logo.png';
-  String service1 = 'assets/markus-winkler-pOu_UmkOG-0-unsplash 1.png';
-  String text = 'Get';
-  String services1 = 'Pharmacy';
-  String thisTitle = 'Get verified medicines';
   @override
   Widget build(BuildContext context) {
+    String pharmaname = 'Beckham Pharmacy';
+    String address = 'Uyo Akwa Ibom State';
+    String img = 'assets/Logo.png';
+    String asset1 = 'assets/markus-winkler-pOu_UmkOG-0-unsplash 1.png';
     return Scaffold(
       backgroundColor: HexColor('F8F8FB'),
       drawer: Drawer(
@@ -325,189 +316,57 @@ class _HomeState extends State<Home> {
               )),
         ],
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Container(
-            color: HexColor('F8F8FB'),
-            margin: const EdgeInsets.fromLTRB(24, 28, 24, 0),
-            child: Column(
-              children: [
-                TextFormField(
-                  decoration: InputDecoration(
-                    //    enabled: ,
-                    prefixIcon: const Icon(Icons.search),
-                    hintText: 'Search For a Pharmacy',
-                    fillColor: Colors.white,
-                    filled: true,
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 45,
+          ),
+          Center(
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
+              margin: EdgeInsets.fromLTRB(24, 0, 24, 0),
+              constraints: BoxConstraints(minWidth: 327, minHeight: 126),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 20, 36, 28),
+                    child: SizedBox(
+                      width: 60,
+                      height: 60,
+                      child: Image.asset(asset1),
                     ),
-
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8)),
                   ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SearchScreen()),
-                    );
-                  },
-                ),
-
-                //SIZEDBOX FOR SPACING
-
-                SizedBox(
-                  height: 24,
-                ),
-
-                MyWidgetClass(
-                  pages: Pharmacy(),
-                  img: service1,
-                  buttonText: text,
-                  title: thisTitle,
-                  services: services1,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-
-                MyWidgetClass(
-                  pages: '',
-                  img: service1,
-                  buttonText: text,
-                  title: thisTitle,
-                  services: 'Consult Doctor',
-                ),
-
-                SizedBox(
-                  height: 20,
-                ),
-
-                MyWidgetClass(
-                  pages: '',
-                  img: service1,
-                  buttonText: text,
-                  title: thisTitle,
-                  services: 'Lab Test',
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 32),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Doctors near you',
+                        pharmaname,
                         style: GoogleFonts.poppins(
-                          fontSize: 18,
                           fontWeight: FontWeight.w500,
                           fontStyle: FontStyle.normal,
-                          color: HexColor('0a0a0a'),
+                          fontSize: 16,
                         ),
                       ),
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          primary: Colors.white,
-                          enableFeedback: false,
-                          //    onSurface: Colors.transparent,
-                          //     shadowColor: Colors.transparent,
-                          //    backgroundColor: Colors.transparent
-                        ),
-                        onPressed: () {},
-                        child: Text(
-                          'See all',
-                          style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w500,
-                            color: HexColor('27ae60'),
-                          ),
+                      Text(
+                        address,
+                        style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w400,
+                          color: HexColor('#ABAFB3'),
                         ),
                       ),
                     ],
-                  ),
-                ),
-                SizedBox(
-                  height: 32,
-                ),
-                SingleChildScrollView(
-                  clipBehavior: Clip.none,
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Doctor(
-                        doctor: 'assets/Ellipse 31.png',
-                        docName: 'Emmanuel Ekpenyong',
-                        docTitle:
-                            'Gynacologist, General Physician, Endocrinologist '
-                            'M.B.B.S, MRCP (UK), MRCP, Nigeria',
-                        starCount: 4,
-                        rating: 4.5,
-                      ),
-                      SizedBox(
-                        width: 17,
-                      ),
-                      Doctor(
-                        doctor: 'assets/Ellipse 31.png',
-                        docName: 'Dr Emmanuel Ugen',
-                        docTitle:
-                            'Internal Medicine Specialist, Urologist, General PhysicianMBBS, MCPS, MRCGP (UK), Nigeria',
-                        starCount: 3,
-                        rating: 3.0,
-                      ),
-                      SizedBox(
-                        width: 17,
-                      ),
-                      Doctor(
-                        doctor: 'assets/Ellipse 31.png',
-                        docName: 'Dr Emmanuel Ugen',
-                        docTitle:
-                            'Internal Medicine Specialist, Urologist, General PhysicianMBBS, MCPS, MRCGP (UK), Nigeria',
-                        starCount: 3,
-                        rating: 3.0,
-                      ),
-                      SizedBox(
-                        width: 17,
-                      ),
-                      Doctor(
-                        doctor: 'assets/Ellipse 31.png',
-                        docName: 'Dr Emmanuel Ugen',
-                        docTitle:
-                            'Internal Medicine Specialist, Urologist, General PhysicianMBBS, MCPS, MRCGP (UK), Nigeria',
-                        starCount: 3,
-                        rating: 3.0,
-                      ),
-                      SizedBox(
-                        width: 17,
-                      ),
-                      Doctor(
-                        doctor: 'assets/Ellipse 31.png',
-                        docName: '',
-                        docTitle: '',
-                        starCount: 3,
-                        rating: 3.0,
-                      ),
-                      SizedBox(
-                        width: 17,
-                      ),
-                      Doctor(
-                        doctor: 'assets/Ellipse 31.png',
-                        docName: '',
-                        docTitle: '',
-                        starCount: 3,
-                        rating: 3.0,
-                      ),
-                    ],
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
-          ),
-        ),
+          )
+        ],
       ),
-      // bottomNavigationBar: const NavBarClass(),
     );
   }
 }

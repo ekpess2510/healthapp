@@ -18,11 +18,11 @@ class ChatProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0.0,
-      margin: EdgeInsets.fromLTRB(10, 0, 10, 16),
+      margin: const EdgeInsets.fromLTRB(10, 0, 10, 16),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(14, 0, 14, 0),
         child: Container(
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxHeight: 80,
             minWidth: 327,
           ),
@@ -39,7 +39,7 @@ class ChatProfile extends StatelessWidget {
                       child: Image.asset(images),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 14,
                   ),
                   Container(
@@ -106,7 +106,7 @@ class ChatProfiles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0.0,
-      margin: EdgeInsets.fromLTRB(10, 0, 10, 16),
+      margin: const EdgeInsets.fromLTRB(10, 0, 10, 16),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(14, 0, 14, 0),
         child: Container(
