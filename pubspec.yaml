@@ -41,6 +41,11 @@ dependencies:
   flutter_rating: ^0.0.2
   url_launcher: ^6.0.12
   intl: ^0.17.0
+  flutter_automation: ^2.0.0
+  firebase_auth: ^3.1.4
+  firebase_core: ^1.8.0
+  intl_phone_field: ^2.1.0
+  otp_text_field: ^1.1.1
 
 dev_dependencies:
   flutter_test:

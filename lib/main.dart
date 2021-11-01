@@ -2,14 +2,16 @@
 
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:health/ui/homescrn.dart';
 import 'package:health/widgets/dismisskeyboard.dart';
-import 'package:health/widgets/navbar.dart';
+import 'package:health/widgets/otp.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -54,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
         () => Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const DismissKeyboard(child: NavBarClass()),
+              builder: (context) => DismissKeyboard(child: OTP()),
             )));
   }
 

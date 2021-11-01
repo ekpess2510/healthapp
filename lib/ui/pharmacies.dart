@@ -332,147 +332,415 @@ class Pharmacy extends StatelessWidget {
               )),
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 45,
-          ),
-          Center(
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
-              margin: EdgeInsets.fromLTRB(24, 0, 24, 0),
-              constraints: BoxConstraints(minWidth: 327, minHeight: 126),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 20, 36, 28),
-                    child: SizedBox(
-                      width: 60,
-                      height: 60,
-                      child: Image.asset(asset1),
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Container(
+          margin: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 45,
+              ),
+              Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10)),
+                  constraints:
+                      const BoxConstraints(minWidth: 327, minHeight: 126),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        pharmaname,
-                        style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w500,
-                          fontStyle: FontStyle.normal,
-                          fontSize: 16,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 20, 36, 28),
+                        child: SizedBox(
+                          width: 60,
+                          height: 60,
+                          child: Image.asset(asset1),
                         ),
                       ),
-                      Text(
-                        address,
-                        style: GoogleFonts.poppins(
-                          fontSize: 12,
-                          fontStyle: FontStyle.normal,
-                          fontWeight: FontWeight.w400,
-                          color: HexColor('#ABAFB3'),
-                        ),
-                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            pharmaname,
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w500,
+                              fontStyle: FontStyle.normal,
+                              fontSize: 16,
+                            ),
+                          ),
+                          Text(
+                            address,
+                            style: GoogleFonts.poppins(
+                              fontSize: 12,
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.w400,
+                              color: HexColor('#ABAFB3'),
+                            ),
+                          ),
+                        ],
+                      )
                     ],
-                  )
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 18,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  OutlinedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const InboxScreen()));
+                      },
+                      child: Row(
+                        //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(
+                            Icons.chat_outlined,
+                            color: Colors.black,
+                            size: 10,
+                          ),
+                          SizedBox(width: 4),
+                          Text(
+                            'Chat',
+                            style: GoogleFonts.poppins(
+                              color: Colors.black,
+                              fontStyle: FontStyle.normal,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                      style: OutlinedButton.styleFrom(
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30))),
+                          //onSurface: Colors.green,
+                          side: BorderSide(color: HexColor('00a651')))),
+                  OutlinedButton(
+                      onPressed: _makingCall,
+                      child: Row(
+                        //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(
+                            Icons.call_outlined,
+                            color: Colors.black,
+                            size: 10,
+                          ),
+                          SizedBox(width: 4),
+                          Text(
+                            'Call',
+                            style: GoogleFonts.poppins(
+                              color: Colors.black,
+                              fontStyle: FontStyle.normal,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                      style: OutlinedButton.styleFrom(
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30))),
+                          //onSurface: Colors.green,
+                          side: BorderSide(color: HexColor('00a651')))),
+                  OutlinedButton(
+                      onPressed: () {},
+                      child: Row(
+                        //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(
+                            Icons.star_border_outlined,
+                            color: Colors.black,
+                            size: 10,
+                          ),
+                          SizedBox(width: 4),
+                          Text(
+                            'Reviews',
+                            style: GoogleFonts.poppins(
+                              color: Colors.black,
+                              fontStyle: FontStyle.normal,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                      style: OutlinedButton.styleFrom(
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30))),
+                          //onSurface: Colors.green,
+                          side: BorderSide(color: HexColor('00a651')))),
                 ],
               ),
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              OutlinedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const InboxScreen()));
-                  },
-                  child: Row(
-                    //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(
-                        Icons.chat_outlined,
-                        color: Colors.black,
-                        size: 10,
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                        'Chat',
-                        style: GoogleFonts.poppins(
-                          color: Colors.black,
-                          fontStyle: FontStyle.normal,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
+              const SizedBox(
+                height: 33,
+              ),
+              Text(
+                'Products',
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  fontStyle: FontStyle.normal,
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 32, 0, 32),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 74,
+                              height: 74,
+                              child: Container(
+                                child: Image.asset('assets/covid.png'),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 11,
+                            ),
+                            Text(
+                              'Covid-19',
+                              style: GoogleFonts.poppins(
+                                fontStyle: FontStyle.normal,
+                                fontSize: 14,
+                                color: HexColor('0a0a0a'),
+                                fontWeight: FontWeight.w400,
+                              ),
+                            )
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                  style: OutlinedButton.styleFrom(
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(30))),
-                      //onSurface: Colors.green,
-                      side: BorderSide(color: HexColor('00a651')))),
-              OutlinedButton(
-                  onPressed: _makingCall,
-                  child: Row(
-                    //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(
-                        Icons.call_outlined,
-                        color: Colors.black,
-                        size: 10,
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                        'Call',
-                        style: GoogleFonts.poppins(
-                          color: Colors.black,
-                          fontStyle: FontStyle.normal,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 74,
+                              height: 74,
+                              child: Container(
+                                child: Image.asset('assets/bp.png'),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 11,
+                            ),
+                            Text(
+                              'Blood\nPressure',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(
+                                fontStyle: FontStyle.normal,
+                                fontSize: 14,
+                                color: HexColor('0a0a0a'),
+                                fontWeight: FontWeight.w400,
+                              ),
+                            )
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                  style: OutlinedButton.styleFrom(
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(30))),
-                      //onSurface: Colors.green,
-                      side: BorderSide(color: HexColor('00a651')))),
-              OutlinedButton(
-                  onPressed: () {},
-                  child: Row(
-                    //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(
-                        Icons.star_border_outlined,
-                        color: Colors.black,
-                        size: 10,
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                        'Reviews',
-                        style: GoogleFonts.poppins(
-                          color: Colors.black,
-                          fontStyle: FontStyle.normal,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 74,
+                              height: 74,
+                              child: Container(
+                                child: Image.asset('assets/pills.png'),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 11,
+                            ),
+                            Text(
+                              'Pain killers',
+                              style: GoogleFonts.poppins(
+                                fontStyle: FontStyle.normal,
+                                fontSize: 14,
+                                color: HexColor('0a0a0a'),
+                                fontWeight: FontWeight.w400,
+                              ),
+                            )
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                  style: OutlinedButton.styleFrom(
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(30))),
-                      //onSurface: Colors.green,
-                      side: BorderSide(color: HexColor('00a651')))),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 39,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 74,
+                              height: 74,
+                              child: Container(
+                                child: Image.asset('assets/singlepill.png'),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 11,
+                            ),
+                            Text(
+                              'Stomach',
+                              style: GoogleFonts.poppins(
+                                fontStyle: FontStyle.normal,
+                                fontSize: 14,
+                                color: HexColor('0a0a0a'),
+                                fontWeight: FontWeight.w400,
+                              ),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 74,
+                              height: 74,
+                              child: Container(
+                                child: Image.asset('assets/pill pink.png'),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 11,
+                            ),
+                            Text(
+                              'Heart',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(
+                                fontStyle: FontStyle.normal,
+                                fontSize: 14,
+                                color: HexColor('0a0a0a'),
+                                fontWeight: FontWeight.w400,
+                              ),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 74,
+                              height: 74,
+                              child: Container(
+                                child: Image.asset('assets/pill yellow.png'),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 11,
+                            ),
+                            Text(
+                              'Diabetes',
+                              style: GoogleFonts.poppins(
+                                fontStyle: FontStyle.normal,
+                                fontSize: 14,
+                                color: HexColor('0a0a0a'),
+                                fontWeight: FontWeight.w400,
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 39,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 74,
+                              height: 74,
+                              child: Container(
+                                child: Image.asset('assets/pill green.png'),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 11,
+                            ),
+                            Text(
+                              'Neuro Pill',
+                              style: GoogleFonts.poppins(
+                                fontStyle: FontStyle.normal,
+                                fontSize: 14,
+                                color: HexColor('0a0a0a'),
+                                fontWeight: FontWeight.w400,
+                              ),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 74,
+                              height: 74,
+                              child: Container(
+                                child: Image.asset('assets/pill group.png'),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 11,
+                            ),
+                            Text(
+                              'Immune\nSystem',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(
+                                fontStyle: FontStyle.normal,
+                                fontSize: 14,
+                                color: HexColor('0a0a0a'),
+                                fontWeight: FontWeight.w400,
+                              ),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 74,
+                              height: 74,
+                              child: Container(
+                                child: Image.asset('assets/drug abuse.png'),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 11,
+                            ),
+                            Text(
+                              'Others',
+                              style: GoogleFonts.poppins(
+                                fontStyle: FontStyle.normal,
+                                fontSize: 14,
+                                color: HexColor('0a0a0a'),
+                                fontWeight: FontWeight.w400,
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 39,
+                    ),
+                  ],
+                ),
+              )
             ],
-          )
-        ],
+          ),
+        ),
       ),
     );
   }
