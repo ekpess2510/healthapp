@@ -374,7 +374,7 @@ class _HomeState extends State<Home> {
                 ),
 
                 MyWidgetClass(
-                  pages: '',
+                  pages: null,
                   img: service1,
                   buttonText: text,
                   title: thisTitle,
@@ -386,7 +386,7 @@ class _HomeState extends State<Home> {
                 ),
 
                 MyWidgetClass(
-                  pages: '',
+                  pages: null,
                   img: service1,
                   buttonText: text,
                   title: thisTitle,
