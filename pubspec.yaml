@@ -39,6 +39,8 @@ dependencies:
   sizer: ^2.0.15
   responsive_sizer: ^3.0.4+4
   flutter_rating: ^0.0.2
+  url_launcher: ^6.0.12
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:

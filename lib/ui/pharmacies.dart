@@ -1,16 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health/ui/inboxscreen.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Pharmacy extends StatelessWidget {
   const Pharmacy({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // String formattedDate = DateFormat('kk:mm').format(now);
+    dynamic currentTime = DateFormat.jm().format(DateTime.now());
+    String phone = '+2347069702347';
     String pharmaname = 'Beckham Pharmacy';
     String address = 'Uyo Akwa Ibom State';
     String img = 'assets/Logo.png';
     String asset1 = 'assets/markus-winkler-pOu_UmkOG-0-unsplash 1.png';
+
+    _makingCall() async {
+      const url = 'tel:+2347069702347';
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw ' could not launch $url';
+      }
+    }
+
     return Scaffold(
       backgroundColor: HexColor('F8F8FB'),
       drawer: Drawer(
@@ -364,6 +380,97 @@ class Pharmacy extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              OutlinedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const InboxScreen()));
+                  },
+                  child: Row(
+                    //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.chat_outlined,
+                        color: Colors.black,
+                        size: 10,
+                      ),
+                      SizedBox(width: 4),
+                      Text(
+                        'Chat',
+                        style: GoogleFonts.poppins(
+                          color: Colors.black,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
+                  style: OutlinedButton.styleFrom(
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(30))),
+                      //onSurface: Colors.green,
+                      side: BorderSide(color: HexColor('00a651')))),
+              OutlinedButton(
+                  onPressed: _makingCall,
+                  child: Row(
+                    //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.call_outlined,
+                        color: Colors.black,
+                        size: 10,
+                      ),
+                      SizedBox(width: 4),
+                      Text(
+                        'Call',
+                        style: GoogleFonts.poppins(
+                          color: Colors.black,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
+                  style: OutlinedButton.styleFrom(
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(30))),
+                      //onSurface: Colors.green,
+                      side: BorderSide(color: HexColor('00a651')))),
+              OutlinedButton(
+                  onPressed: () {},
+                  child: Row(
+                    //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.star_border_outlined,
+                        color: Colors.black,
+                        size: 10,
+                      ),
+                      SizedBox(width: 4),
+                      Text(
+                        'Reviews',
+                        style: GoogleFonts.poppins(
+                          color: Colors.black,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
+                  style: OutlinedButton.styleFrom(
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(30))),
+                      //onSurface: Colors.green,
+                      side: BorderSide(color: HexColor('00a651')))),
+            ],
           )
         ],
       ),
