@@ -5,7 +5,7 @@ import 'package:hexcolor/hexcolor.dart';
 class ChatProfile extends StatelessWidget {
   String docname;
   String message;
-  String time;
+  dynamic time;
   String images;
   ChatProfile({
     required this.message,
