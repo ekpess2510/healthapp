@@ -2,14 +2,17 @@
 
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:health/widgets/dismisskeyboard.dart';
-import 'package:health/widgets/otp.dart';
+import 'package:health/widgets/navbar.dart';
+import 'package:health/widgets/newotp.dart';
+//import 'package:health/widgets/otp.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-Future<void> main() async {
+main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
@@ -56,7 +59,7 @@ class _SplashScreenState extends State<SplashScreen> {
         () => Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => DismissKeyboard(child: OTP()),
+              builder: (context) => const DismissKeyboard(child: NewOtp()),
             )));
   }
 
@@ -81,5 +84,37 @@ class _SplashScreenState extends State<SplashScreen> {
         ],
       ),
     ); // FlutterLogo(size: MediaQuery.of(context).size.height));
+  }
+}
+
+class Initializer extends StatefulWidget {
+  //const Initializer({Key? key}) : super(key: key);
+
+  @override
+  _InitializerState createState() => _InitializerState();
+}
+
+class _InitializerState extends State<Initializer> {
+  FirebaseAuth _auth;
+  User _user;
+  bool isLoading = true;
+  void initState() {
+    super.initState();
+    _auth = FirebaseAuth.instance;
+    _user = _auth.currentUser;
+    isLoading = false;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return isLoading
+        ? const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          )
+        : _user == null
+            ? const NewOtp()
+            : const NavBarClass();
   }
 }

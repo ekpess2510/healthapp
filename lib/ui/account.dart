@@ -1,12 +1,20 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health/widgets/newotp.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class AccountPage extends StatelessWidget {
+class AccountPage extends StatefulWidget {
   // AccountPage({
   //   required this.img,
   // });
+  @override
+  State<AccountPage> createState() => _AccountPageState();
+}
+
+class _AccountPageState extends State<AccountPage> {
+  final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     String img = 'assets/Logo.png';
@@ -571,6 +579,27 @@ class AccountPage extends StatelessWidget {
                       ),
                     ],
                   ),
+                ),
+                SizedBox(
+                  height: 24,
+                ),
+                SizedBox(
+                  width: 300,
+                  height: 50,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(primary: Colors.red),
+                      onPressed: () async {
+                        _auth.signOut();
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => NewOtp()));
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.logout),
+                          Text('LogOut'),
+                        ],
+                      )),
                 )
               ],
             ),
